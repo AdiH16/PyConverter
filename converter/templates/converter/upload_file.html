@@ -1,0 +1,18 @@
+
+{% extends "converter/base_generic.html" %}
+
+{% block content %}
+  <h2>Upload a file</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if file_url %}
+    <p>
+      Your file has been converted successfully.
+      <a href="{{ file_url }}">Click here to download it.</a>
+    </p>
+  {% endif %}
+{% endblock %}
